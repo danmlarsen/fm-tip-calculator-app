@@ -20,21 +20,21 @@
                     <div class="calculator__bill">
                         <label for="bill">Bill</label>
                         <p class="calculator__validation-message"></p>
-                        <input type="number" name="" id="bill" placeholder="0" />
+                        <input type="number" name="bill" id="bill" placeholder="0" min="1" max="10000" step="0.5" autocomplete="billing" />
                     </div>
                     <div class="calculator__tip">
-                        <label>Select Tip %</label>
+                        <label for="custom-tip">Select Tip %</label>
                         <button class="calculator__tip-button" value="5">5%</button>
                         <button class="calculator__tip-button" value="10">10%</button>
                         <button class="calculator__tip-button" value="15">15%</button>
                         <button class="calculator__tip-button" value="25">25%</button>
                         <button class="calculator__tip-button" value="50">50%</button>
-                        <input type="number" name="" id="custom-tip" placeholder="Custom" />
+                        <input type="number" name="custom-tip" id="custom-tip" placeholder="Custom" min="1" max="1000" step="5" />
                     </div>
                     <div class="calculator__num-people">
                         <label for="num-people">Number of People</label>
                         <p class="calculator__validation-message"></p>
-                        <input type="number" name="" id="num-people" placeholder="0" />
+                        <input type="number" name="num-people" id="num-people" placeholder="0" min="1" max="1000" step="1" autocomplete="off" />
                     </div>
                 </div>
                 <div class="calculator__output-container">
