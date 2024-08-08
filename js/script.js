@@ -10,7 +10,7 @@ const initialState = {
     bill: null,
     tip: null,
     numPeople: null,
-    activated: false,
+    calculated: false,
 };
 
 const state = { ...initialState };
@@ -21,7 +21,8 @@ const calc = function () {
     const { bill, tip, numPeople } = state;
     if (!bill || !tip || !numPeople) return;
 
-    state.activated = true;
+    state.calculated = true;
+    resetBtnEl.removeAttribute('disabled');
 
     const totalTip = calcTip(bill, tip);
     const tipPerPerson = totalTip / numPeople;
@@ -32,8 +33,6 @@ const calc = function () {
 };
 
 const handleBillInput = function (e) {
-    console.log(this.value);
-
     // validation goes here
 
     state.bill = this.value;
@@ -60,11 +59,10 @@ const handleTipInputText = function (e) {
     // validation goes here
 
     state.tip = this.value;
+    calc();
 };
 
 const handleNumPeopleInput = function (e) {
-    console.log(this.value);
-
     // validation goes here
 
     state.numPeople = this.value;
@@ -72,16 +70,20 @@ const handleNumPeopleInput = function (e) {
 };
 
 const handleReset = function () {
+    if (!state.calculated) return;
+
     Object.keys(state).forEach(key => {
         state[key] = initialState[key];
     });
 
-    billInputEl.value = '0';
+    billInputEl.value = '';
     handleTipButtonDeselect();
-    numPeopleInputEl.value = '0';
-    tipAmountEl.textContent = '0';
+    numPeopleInputEl.value = '';
     tipCustomInputEl.value = '';
+    tipAmountEl.textContent = '0';
     totalAmountEl.textContent = '0';
+
+    resetBtnEl.setAttribute('disabled', true);
 };
 
 billInputEl.addEventListener('input', handleBillInput);
