@@ -1,131 +1,182 @@
-@import url('reset.css');
+@import url("reset.css");
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-    /* Colors */
-    --color-primary: hsl(172, 67%, 45%);
-    --color-neutral-900: hsl(183, 100%, 15%);
-    --color-neutral-700: hsl(186, 14%, 43%);
-    --color-neutral-600: hsl(184, 14%, 56%);
-    --color-neutral-400: hsl(185, 41%, 84%);
-    --color-neutral-200: hsl(189, 41%, 97%);
-    --color-neutral-100: hsl(0, 0%, 100%);
+  /* Colors */
+  --color-primary: hsl(172, 67%, 45%);
+  --color-invalid: rgb(201, 69, 69);
+  --color-neutral-900: hsl(183, 100%, 15%);
+  --color-neutral-700: hsl(186, 14%, 43%);
+  --color-neutral-600: hsl(184, 14%, 56%);
+  --color-neutral-400: hsl(185, 41%, 84%);
+  --color-neutral-200: hsl(189, 41%, 97%);
+  --color-neutral-100: hsl(0, 0%, 100%);
 
-    /* Typography */
-    --ff-primary: 'Space Mono';
-    --fs-200: 1.4rem;
-    --fs-400: 1.8rem;
-    --fs-800: 3rem;
-    --fw-bold: 700;
+  /* Typography */
+  --ff-primary: "Space Mono";
+  --fs-200: 1.4rem;
+  --fs-400: 1.6rem;
+  --fs-800: 3rem;
+  --fw-bold: 700;
 }
 
 body {
-    font-family: 'Space Mono', sans-serif;
-    font-size: var(--fs-400);
-    font-weight: var(--fw-bold);
-    background-color: var(--color-neutral-400);
-    color: var(--color-neutral-700);
+  font-family: "Space Mono", sans-serif;
+  font-size: var(--fs-400);
+  font-weight: var(--fw-bold);
+  background-color: var(--color-neutral-400);
+  color: var(--color-neutral-700);
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 16rem 1fr;
-    justify-items: center;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 16rem 1fr;
+  justify-items: center;
+  align-items: center;
 }
 
 input {
-    display: block;
-    width: 100%;
-    text-align: right;
-    padding: 0.8rem 0;
-    border: none;
-    border-radius: 9px;
-    outline: none;
-    background-color: var(--color-neutral-200);
-    color: var(--color-neutral-900);
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 0.8rem 0;
+  border: none;
+  border-radius: 9px;
+  outline: none;
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-900);
 }
 
 button {
-    padding: 1rem;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--color-neutral-900);
-    color: var(--color-neutral-100);
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-neutral-900);
+  color: var(--color-neutral-100);
+}
+
+.calculator__tip-button--active,
+button:active {
+  background-color: var(--color-primary);
+}
+
+button:hover,
+button:focus {
+  background-color: var(--color-neutral-400);
+  color: var(--color-primary);
 }
 
 .calculator {
-    min-height: 100%;
-    max-width: 42rem;
-    width: 100%;
-    background-color: var(--color-neutral-100);
-    padding: 3.2rem;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+  min-height: 100%;
+  max-width: 42rem;
+  width: 100%;
+  background-color: var(--color-neutral-100);
+  padding: 3.2rem;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
 }
 
 .calculator__input-container {
-    display: grid;
-    row-gap: 2rem;
+  display: grid;
+  row-gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.calculator__bill input {
+  background-image: url("../images/icon-dollar.svg");
+}
+
+.calculator__num-people input {
+  background-image: url("../images/icon-person.svg");
+}
+
+.calculator__bill,
+.calculator__num-people {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.calculator__bill input,
+.calculator__num-people input {
+  grid-column: 1 / -1;
+  background-position: 2rem center;
+  background-repeat: no-repeat;
+}
+
+.calculator__validation-message {
+  justify-self: end;
+}
+
+.invalid .calculator__validation-message {
+  color: var(--color-invalid);
+}
+
+.valid input {
+  /* box-shadow: 0 0 0 1px var(--color-primary); */
+  outline: 1px solid var(--color-primary);
+}
+
+.invalid input {
+  outline: 1px solid var(--color-invalid);
 }
 
 .calculator__tip {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 .calculator__tip > label {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
 .calculator__output-container {
-    padding: 3.2rem;
-    background-color: var(--color-neutral-900);
-    border-radius: 15px;
-    display: grid;
-    gap: 2rem;
+  padding: 3.2rem;
+  background-color: var(--color-neutral-900);
+  border-radius: 15px;
+  display: grid;
+  gap: 2rem;
 }
 
 .calulator__tip-amount p:first-of-type,
 .calculator__total p:first-of-type {
-    color: var(--color-neutral-200);
+  color: var(--color-neutral-200);
 }
 
 .calculator__output-container > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 
 .calculator__output-container p {
-    grid-column: 1;
+  grid-column: 1;
 }
 
 .calculator__output-container p:last-of-type {
-    font-size: var(--fs-200);
-    line-height: 1;
+  font-size: var(--fs-200);
+  line-height: 1;
 }
 
 .calculator__output-container h2 {
-    grid-column: 2;
-    grid-row: span 2;
-    justify-self: end;
-    font-size: var(--fs-800);
-    color: var(--color-primary);
+  grid-column: 2;
+  grid-row: span 2;
+  justify-self: end;
+  font-size: var(--fs-800);
+  color: var(--color-primary);
 }
 
 .calculator__output-container h2::before {
-    content: '$';
+  content: "$";
 }
 
 .calulator__reset-btn {
-    background-color: var(--color-primary);
-    color: var(--color-neutral-900);
-    width: 100%;
-    text-transform: uppercase;
+  background-color: var(--color-primary);
+  color: var(--color-neutral-900);
+  width: 100%;
+  text-transform: uppercase;
 }
