@@ -11,6 +11,7 @@ const initialState = {
     tip: null,
     numPeople: null,
     calculated: false,
+    touched: false,
 };
 
 const state = { ...initialState };
@@ -18,11 +19,13 @@ const state = { ...initialState };
 const calcTip = (bill, tip) => bill * (tip / 100);
 
 const calc = function () {
+    state.touched = true;
+    resetBtnEl.removeAttribute('disabled');
+
     const { bill, tip, numPeople } = state;
     if (!bill || !tip || !numPeople) return;
 
     state.calculated = true;
-    resetBtnEl.removeAttribute('disabled');
 
     const totalTip = calcTip(bill, tip);
     const tipPerPerson = totalTip / numPeople;
@@ -70,7 +73,7 @@ const handleNumPeopleInput = function (e) {
 };
 
 const handleReset = function () {
-    if (!state.calculated) return;
+    if (!state.touched) return;
 
     Object.keys(state).forEach(key => {
         state[key] = initialState[key];
@@ -84,6 +87,8 @@ const handleReset = function () {
     totalAmountEl.textContent = '0';
 
     resetBtnEl.setAttribute('disabled', true);
+
+    document.activeElement.blur();
 };
 
 billInputEl.addEventListener('input', handleBillInput);

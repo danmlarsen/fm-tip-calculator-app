@@ -7,6 +7,8 @@
     --color-primary: hsl(172, 67%, 45%);
     --color-invalid: rgb(201, 69, 69);
     --color-neutral-900: hsl(183, 100%, 15%);
+    --color-neutral-850: hsla(183, 100%, 15%, 0.3);
+    --color-neutral-800: hsl(183, 80%, 24%);
     --color-neutral-700: hsl(186, 14%, 43%);
     --color-neutral-600: hsl(184, 14%, 56%);
     --color-neutral-400: hsl(185, 41%, 84%);
@@ -50,6 +52,7 @@ input {
     background-color: var(--color-neutral-200);
     color: var(--color-neutral-900);
     font-size: var(--fs-600);
+    caret-color: currentColor;
 }
 
 input:active,
@@ -77,14 +80,16 @@ button:focus {
     outline: 2px solid var(--color-neutral-700);
 }
 
-button:disabled {
-    background-color: var(--color-neutral-700);
-}
-
 button.calculator__tip-button--active,
 button:active {
     background-color: var(--color-primary);
     color: var(--color-neutral-900);
+}
+
+button:disabled {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-850);
+    cursor: default;
 }
 
 .calculator {
@@ -139,12 +144,13 @@ button:active {
 }
 
 .valid input {
-    /* box-shadow: 0 0 0 1px var(--color-primary); */
-    outline: 1px solid var(--color-primary);
+    outline: 2px solid var(--color-primary);
+    caret-color: var(--color-primary);
 }
 
 .invalid input {
-    outline: 1px solid var(--color-invalid);
+    outline: 2px solid var(--color-invalid);
+    caret-color: var(--color-invalid);
 }
 
 .calculator__tip {
