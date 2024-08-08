@@ -1,0 +1,64 @@
+@import url('reset.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    /* Colors */
+    --color-primary: hsl(172, 67%, 45%);
+    --color-neutral-900: hsl(183, 100%, 15%);
+    --color-neutral-700: hsl(186, 14%, 43%);
+    --color-neutral-600: hsl(184, 14%, 56%);
+    --color-neutral-400: hsl(185, 41%, 84%);
+    --color-neutral-200: hsl(189, 41%, 97%);
+    --color-neutral-100: hsl(0, 0%, 100%);
+
+    /* Typography */
+    --ff-primary: 'Space Mono';
+    --fs-400: 1.8rem;
+    --fw-bold: 700;
+}
+
+body {
+    font-family: 'Space Mono', sans-serif;
+    font-size: var(--fs-400);
+    font-weight: var(--fw-bold);
+    background-color: var(--color-neutral-400);
+    color: var(--color-neutral-700);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 16rem 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.header {
+    /* padding: 3.2rem 0; */
+}
+
+.calculator {
+    min-height: 100%;
+    background-color: var(--color-neutral-100);
+    padding: 2.4rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
+
+.calculator__output-container {
+    padding: 3.2rem;
+    background-color: var(--color-neutral-900);
+    border-radius: 15px;
+}
+
+.calulator__tip-amount p:first-of-type,
+.calculator__total p:first-of-type {
+    color: var(--color-neutral-200);
+}
+
+.calculator__output-container h2::before {
+    content: '$';
+}
