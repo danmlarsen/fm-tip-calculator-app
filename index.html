@@ -1,59 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Tip Calculator App" />
-        <title>Tip Calculator App</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tip Calculator App" />
+    <title>Tip Calculator App</title>
 
-        <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
 
-        <script defer src="js/script.js"></script>
-    </head>
-    <body>
-        <main>
-            <header class="header">
-                <img src="images/logo.svg" alt="Tip Calculator Logo" class="header__logo" />
-            </header>
-            
-            <form action="#" method="post" class="calculator__form">
-                <div class="calculator">
-                    <div class="calculator__input-container">
-                        <div class="calculator__bill">
-                            <label for="bill">Bill</label>
-                            <p class="calculator__validation-message"></p>
-                            <input type="number" name="bill" id="bill" placeholder="0" min="1" max="10000" step="0.5" autocomplete="off" />
-                        </div>
-                        <div class="calculator__tip">
-                            <label for="custom-tip">Select Tip %</label>
-                            <button type="button" class="calculator__tip-button" value="5">5%</button>
-                            <button type="button" class="calculator__tip-button" value="10">10%</button>
-                            <button type="button" class="calculator__tip-button" value="15">15%</button>
-                            <button type="button" class="calculator__tip-button" value="25">25%</button>
-                            <button type="button" class="calculator__tip-button" value="50">50%</button>
-                            <input type="number" name="custom-tip" id="custom-tip" placeholder="Custom" min="1" max="1000" step="1" autocomplete="off" />
-                        </div>
-                        <div class="calculator__num-people">
-                            <label for="num-people">Number of People</label>
-                            <p class="calculator__validation-message"></p>
-                            <input type="number" name="num-people" id="num-people" placeholder="0" min="1" max="1000" step="1" autocomplete="off" />
-                        </div>
-                    </div>
-                    <div class="calculator__output-container">
-                        <div class="calulator__tip-amount">
-                            <p>Tip Amount</p>
-                            <h2>0.00</h2>
-                            <p>/ person</p>
-                        </div>
-                        <div class="calculator__total">
-                            <p>Total</p>
-                            <h2>0.00</h2>
-                            <p>/ person</p>
-                        </div>
-                        <button type="button" class="calulator__reset-btn" disabled>Reset</button>
-                    </div>
-                </form>
-                </div>
-        </main>
-    </body>
+    <script defer src="js/script.js"></script>
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <img
+          src="images/logo.svg"
+          alt="Tip Calculator Logo"
+          class="header__logo"
+        />
+      </header>
+
+      <form action="#" method="post" class="calculator__form" novalidate>
+        <div class="calculator">
+          <div class="calculator__input-container">
+            <div class="calculator__bill">
+              <label for="bill">Bill</label>
+              <p class="calculator__validation-message"></p>
+              <input
+                type="number"
+                name="bill"
+                id="bill"
+                placeholder="0"
+                min="1"
+                max="10000"
+                step="0.5"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="calculator__tip">
+              <label for="custom-tip">Select Tip %</label>
+              <button type="button" class="calculator__tip-button" value="5">
+                5%
+              </button>
+              <button type="button" class="calculator__tip-button" value="10">
+                10%
+              </button>
+              <button type="button" class="calculator__tip-button" value="15">
+                15%
+              </button>
+              <button type="button" class="calculator__tip-button" value="25">
+                25%
+              </button>
+              <button type="button" class="calculator__tip-button" value="50">
+                50%
+              </button>
+              <input
+                type="number"
+                name="custom-tip"
+                id="custom-tip"
+                placeholder="Custom"
+                min="1"
+                max="1000"
+                step="1"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="calculator__num-people">
+              <label for="num-people">Number of People</label>
+              <p class="calculator__validation-message"></p>
+              <input
+                type="number"
+                name="num-people"
+                id="num-people"
+                placeholder="0"
+                min="1"
+                max="1000"
+                step="1"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="calculator__output-container">
+            <div class="calulator__tip-amount">
+              <p>Tip Amount</p>
+              <h2>0.00</h2>
+              <p>/ person</p>
+            </div>
+            <div class="calculator__total">
+              <p>Total</p>
+              <h2>0.00</h2>
+              <p>/ person</p>
+            </div>
+            <button type="button" class="calulator__reset-btn" disabled>
+              Reset
+            </button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
 </html>
