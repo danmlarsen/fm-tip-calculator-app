@@ -161,6 +161,7 @@ const handleReset = function () {
 
 const handleFormSubmit = function (e) {
     e.preventDefault();
+    document.activeElement.blur();
 
     handleBillInput();
     handleNumPeopleInput();
