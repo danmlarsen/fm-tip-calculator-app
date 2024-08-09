@@ -10,7 +10,6 @@ const initialState = {
     bill: null,
     tip: null,
     numPeople: null,
-    calculated: false,
     touched: false,
 };
 
@@ -21,8 +20,6 @@ const calcTip = (bill, tip) => bill * (tip / 100);
 const handleCalculation = function () {
     const { bill, tip, numPeople } = state;
     if (!bill || !tip || !numPeople) return;
-
-    state.calculated = true;
 
     const totalTip = calcTip(bill, tip);
     const tipPerPerson = totalTip / numPeople;
@@ -80,6 +77,7 @@ const validateNumberInput = function (value, element) {
 
 const handleBillInput = function (e) {
     if (!validateNumberInput(this.value, this)) {
+        state.bill = null;
         return;
     }
 
@@ -99,12 +97,16 @@ const handleTipInputBtns = function (e) {
 
     clickedButton.classList.add('calculator__tip-button--active');
 
+    state.touched = true;
+    resetBtnEl.removeAttribute('disabled');
+
     state.tip = clickedButton.value;
     handleCalculation();
 };
 
 const handleTipInputText = function (e) {
     if (!validateNumberInput(this.value, this)) {
+        state.tip = null;
         return;
     }
 
@@ -116,6 +118,7 @@ const handleTipInputText = function (e) {
 
 const handleNumPeopleInput = function (e) {
     if (!validateNumberInput(this.value, this)) {
+        state.numPeople = null;
         return;
     }
 
