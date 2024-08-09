@@ -19,9 +19,6 @@ const state = { ...initialState };
 const calcTip = (bill, tip) => bill * (tip / 100);
 
 const calc = function () {
-    state.touched = true;
-    resetBtnEl.removeAttribute('disabled');
-
     const { bill, tip, numPeople } = state;
     if (!bill || !tip || !numPeople) return;
 
@@ -35,8 +32,56 @@ const calc = function () {
     totalAmountEl.textContent = Math.round(totalPerPerson * 100) / 100;
 };
 
+const renderError = function (message, element) {
+    const parentEl = element.parentElement;
+    clearValidation(element);
+    parentEl.classList.add('invalid');
+
+    const validationMessageEl = parentEl.querySelector('.calculator__validation-message');
+    if (validationMessageEl) {
+        validationMessageEl.textContent = message;
+    }
+};
+
+const renderValid = function (element) {
+    const parentEl = element.parentElement;
+    clearValidation(element);
+    parentEl.classList.add("'valid");
+};
+
+const clearValidation = function (element) {
+    const parentEl = element.parentElement;
+    const validationMessageEl = parentEl.querySelector('.calculator__validation-message');
+    if (validationMessageEl) {
+        validationMessageEl.textContent = '';
+    }
+
+    parentEl.classList.remove('invalid');
+    parentEl.classList.remove('valid');
+};
+
+const validateNumberInput = function (value, element) {
+    state.touched = true;
+    resetBtnEl.removeAttribute('disabled');
+
+    if (isNaN(value)) {
+        renderError('Not a number', element);
+        return false;
+    }
+
+    if (value <= 0) {
+        renderError("Can't be zero", element);
+        return false;
+    }
+
+    renderValid(element);
+    return true;
+};
+
 const handleBillInput = function (e) {
-    // validation goes here
+    if (!validateNumberInput(this.value, this)) {
+        return;
+    }
 
     state.bill = this.value;
     calc();
@@ -59,14 +104,18 @@ const handleTipInputBtns = function (e) {
 };
 
 const handleTipInputText = function (e) {
-    // validation goes here
+    if (!validateNumberInput(this.value, this)) {
+        return;
+    }
 
     state.tip = this.value;
     calc();
 };
 
 const handleNumPeopleInput = function (e) {
-    // validation goes here
+    if (!validateNumberInput(this.value, this)) {
+        return;
+    }
 
     state.numPeople = this.value;
     calc();
@@ -80,9 +129,16 @@ const handleReset = function () {
     });
 
     billInputEl.value = '';
+    clearValidation(billInputEl);
+
     handleTipButtonDeselect();
+
     numPeopleInputEl.value = '';
+    clearValidation(numPeopleInputEl);
+
     tipCustomInputEl.value = '';
+    clearValidation(tipCustomInputEl);
+
     tipAmountEl.textContent = '0';
     totalAmountEl.textContent = '0';
 
