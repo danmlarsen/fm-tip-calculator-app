@@ -55,6 +55,10 @@ input {
     caret-color: currentColor;
 }
 
+input::placeholder {
+    color: var(--color-neutral-600);
+}
+
 input:active,
 input:focus {
     outline: 2px solid var(--color-primary);
@@ -68,6 +72,7 @@ button {
     color: var(--color-neutral-100);
     cursor: pointer;
     font-size: var(--fs-600);
+    transition: all 0.3s;
 }
 
 button:hover,
@@ -109,8 +114,9 @@ button:disabled {
 
 .calculator__input-container {
     display: grid;
-    row-gap: 2rem;
+    row-gap: 2.4rem;
     margin-bottom: 2rem;
+    align-self: start;
 }
 
 .calculator__bill input {
@@ -125,7 +131,7 @@ button:disabled {
 .calculator__num-people {
     display: grid;
     grid-template-columns: 1fr auto;
-    row-gap: 1rem;
+    row-gap: 0.6rem;
 }
 
 .calculator__bill input,
@@ -169,6 +175,9 @@ button:disabled {
     border-radius: 15px;
     display: grid;
     gap: 2rem;
+
+    grid-template-rows: auto auto 1fr;
+    align-items: end;
 }
 
 .calulator__tip-amount p:first-of-type,
@@ -221,7 +230,7 @@ button:disabled {
     }
 
     .calculator {
-        min-height: 46rem;
+        min-height: 42rem;
         max-width: 86rem;
         grid-template-columns: 1fr 1fr;
         column-gap: 4rem;
@@ -235,13 +244,7 @@ button:disabled {
 
     .calculator__input-container {
         align-self: center;
-        row-gap: 3.2rem;
         margin-bottom: 0;
-    }
-
-    .calculator__output-container {
-        grid-template-rows: auto auto 1fr;
-        align-items: end;
     }
 }
 

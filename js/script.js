@@ -18,7 +18,7 @@ const state = { ...initialState };
 
 const calcTip = (bill, tip) => bill * (tip / 100);
 
-const calc = function () {
+const handleCalculation = function () {
     const { bill, tip, numPeople } = state;
     if (!bill || !tip || !numPeople) return;
 
@@ -28,8 +28,8 @@ const calc = function () {
     const tipPerPerson = totalTip / numPeople;
     const totalPerPerson = bill / numPeople + tipPerPerson;
 
-    tipAmountEl.textContent = Math.floor(tipPerPerson * 100) / 100;
-    totalAmountEl.textContent = Math.round(totalPerPerson * 100) / 100;
+    tipAmountEl.textContent = (Math.floor(tipPerPerson * 100) / 100).toFixed(2);
+    totalAmountEl.textContent = (Math.round(totalPerPerson * 100) / 100).toFixed(2);
 };
 
 const renderError = function (message, element) {
@@ -84,7 +84,7 @@ const handleBillInput = function (e) {
     }
 
     state.bill = this.value;
-    calc();
+    handleCalculation();
 };
 
 const handleTipButtonDeselect = function () {
@@ -100,7 +100,7 @@ const handleTipInputBtns = function (e) {
     clickedButton.classList.add('calculator__tip-button--active');
 
     state.tip = clickedButton.value;
-    calc();
+    handleCalculation();
 };
 
 const handleTipInputText = function (e) {
@@ -108,8 +108,10 @@ const handleTipInputText = function (e) {
         return;
     }
 
+    handleTipButtonDeselect();
+
     state.tip = this.value;
-    calc();
+    handleCalculation();
 };
 
 const handleNumPeopleInput = function (e) {
@@ -118,7 +120,7 @@ const handleNumPeopleInput = function (e) {
     }
 
     state.numPeople = this.value;
-    calc();
+    handleCalculation();
 };
 
 const handleReset = function () {
