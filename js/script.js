@@ -1,3 +1,4 @@
+const formEl = document.querySelector('.calculator__form');
 const billInputEl = document.getElementById('bill');
 const tipContainerEl = document.querySelector('.calculator__tip');
 const tipCustomInputEl = document.getElementById('custom-tip');
@@ -75,13 +76,15 @@ const validateNumberInput = function (value, element) {
     return true;
 };
 
-const handleBillInput = function (e) {
-    if (!validateNumberInput(this.value, this)) {
+const handleBillInput = function () {
+    const value = billInputEl.value;
+
+    if (!validateNumberInput(value, billInputEl)) {
         state.bill = null;
         return;
     }
 
-    state.bill = this.value;
+    state.bill = value;
     handleCalculation();
 };
 
@@ -104,25 +107,29 @@ const handleTipInputBtns = function (e) {
     handleCalculation();
 };
 
-const handleTipInputText = function (e) {
-    if (!validateNumberInput(this.value, this)) {
+const handleTipInputText = function () {
+    const value = tipCustomInputEl.value;
+
+    if (!validateNumberInput(value, tipCustomInputEl)) {
         state.tip = null;
         return;
     }
 
     handleTipButtonDeselect();
 
-    state.tip = this.value;
+    state.tip = value;
     handleCalculation();
 };
 
-const handleNumPeopleInput = function (e) {
-    if (!validateNumberInput(this.value, this)) {
+const handleNumPeopleInput = function () {
+    const value = numPeopleInputEl.value;
+
+    if (!validateNumberInput(value, numPeopleInputEl)) {
         state.numPeople = null;
         return;
     }
 
-    state.numPeople = this.value;
+    state.numPeople = value;
     handleCalculation();
 };
 
@@ -152,6 +159,16 @@ const handleReset = function () {
     document.activeElement.blur();
 };
 
+const handleFormSubmit = function (e) {
+    e.preventDefault();
+
+    handleBillInput();
+    handleNumPeopleInput();
+
+    handleCalculation();
+};
+
+formEl.addEventListener('submit', handleFormSubmit);
 billInputEl.addEventListener('input', handleBillInput);
 tipContainerEl.addEventListener('click', handleTipInputBtns);
 tipCustomInputEl.addEventListener('input', handleTipInputText);

@@ -105,9 +105,13 @@ button:disabled {
     cursor: default;
 }
 
+form {
+    width: 100%;
+    align-self: stretch;
+}
+
 .calculator {
     max-width: 42rem;
-    width: 100%;
     background-color: var(--color-neutral-100);
     padding: 2rem;
     border-top-left-radius: 20px;
@@ -117,7 +121,7 @@ button:disabled {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
-    align-self: stretch;
+    margin: 0 auto;
 }
 
 .calculator__input-container {

@@ -15,43 +15,45 @@
             <header class="header">
                 <img src="images/logo.svg" alt="Tip Calculator Logo" class="header__logo" />
             </header>
-
-            <div class="calculator">
-                <div class="calculator__input-container">
-                    <div class="calculator__bill">
-                        <label for="bill">Bill</label>
-                        <p class="calculator__validation-message"></p>
-                        <input type="number" name="bill" id="bill" placeholder="0" min="1" max="10000" step="0.5" autocomplete="off" />
+            
+            <form action="#" class="calculator__form">
+                <div class="calculator">
+                    <div class="calculator__input-container">
+                        <div class="calculator__bill">
+                            <label for="bill">Bill</label>
+                            <p class="calculator__validation-message"></p>
+                            <input type="number" name="bill" id="bill" placeholder="0" min="1" max="10000" step="0.5" autocomplete="off" />
+                        </div>
+                        <div class="calculator__tip">
+                            <label for="custom-tip">Select Tip %</label>
+                            <button class="calculator__tip-button" value="5">5%</button>
+                            <button class="calculator__tip-button" value="10">10%</button>
+                            <button class="calculator__tip-button" value="15">15%</button>
+                            <button class="calculator__tip-button" value="25">25%</button>
+                            <button class="calculator__tip-button" value="50">50%</button>
+                            <input type="number" name="custom-tip" id="custom-tip" placeholder="Custom" min="1" max="1000" step="1" autocomplete="off" />
+                        </div>
+                        <div class="calculator__num-people">
+                            <label for="num-people">Number of People</label>
+                            <p class="calculator__validation-message"></p>
+                            <input type="number" name="num-people" id="num-people" placeholder="0" min="1" max="1000" step="1" autocomplete="off" />
+                        </div>
                     </div>
-                    <div class="calculator__tip">
-                        <label for="custom-tip">Select Tip %</label>
-                        <button class="calculator__tip-button" value="5">5%</button>
-                        <button class="calculator__tip-button" value="10">10%</button>
-                        <button class="calculator__tip-button" value="15">15%</button>
-                        <button class="calculator__tip-button" value="25">25%</button>
-                        <button class="calculator__tip-button" value="50">50%</button>
-                        <input type="number" name="custom-tip" id="custom-tip" placeholder="Custom" min="1" max="1000" step="1" autocomplete="off" />
+                    <div class="calculator__output-container">
+                        <div class="calulator__tip-amount">
+                            <p>Tip Amount</p>
+                            <h2>0.00</h2>
+                            <p>/ person</p>
+                        </div>
+                        <div class="calculator__total">
+                            <p>Total</p>
+                            <h2>0.00</h2>
+                            <p>/ person</p>
+                        </div>
+                        <button class="calulator__reset-btn" disabled>Reset</button>
                     </div>
-                    <div class="calculator__num-people">
-                        <label for="num-people">Number of People</label>
-                        <p class="calculator__validation-message"></p>
-                        <input type="number" name="num-people" id="num-people" placeholder="0" min="1" max="1000" step="1" autocomplete="off" />
-                    </div>
+                </form>
                 </div>
-                <div class="calculator__output-container">
-                    <div class="calulator__tip-amount">
-                        <p>Tip Amount</p>
-                        <h2>0.00</h2>
-                        <p>/ person</p>
-                    </div>
-                    <div class="calculator__total">
-                        <p>Total</p>
-                        <h2>0.00</h2>
-                        <p>/ person</p>
-                    </div>
-                    <button class="calulator__reset-btn" disabled>Reset</button>
-                </div>
-            </div>
         </main>
     </body>
 </html>
