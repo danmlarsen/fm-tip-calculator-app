@@ -1,20 +1,20 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
-    line-height: 1.5;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -22,15 +22,15 @@ picture,
 video,
 canvas,
 svg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 p,
@@ -40,13 +40,19 @@ h3,
 h4,
 h5,
 h6 {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 ul[class] {
-    list-style: none;
+  list-style: none;
 }
 
-input[type='number']::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
