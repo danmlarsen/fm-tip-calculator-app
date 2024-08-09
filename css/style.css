@@ -213,7 +213,7 @@ button:disabled {
 
 @media screen and (min-width: 64em) {
     body {
-        padding-top: 10rem;
+        padding: 10rem 0;
     }
 
     main {
