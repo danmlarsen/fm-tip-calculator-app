@@ -161,6 +161,7 @@ const handleReset = function () {
 
 const handleFormSubmit = function (e) {
     e.preventDefault();
+
     document.activeElement.blur();
 
     handleBillInput();
@@ -169,6 +170,11 @@ const handleFormSubmit = function (e) {
     handleCalculation();
 };
 
+formEl.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+        handleFormSubmit(e);
+    }
+});
 formEl.addEventListener('submit', handleFormSubmit);
 billInputEl.addEventListener('input', handleBillInput);
 tipContainerEl.addEventListener('click', handleTipInputBtns);
